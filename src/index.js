@@ -8,25 +8,21 @@ const client = new Client({
   }),
 });
 
+client.on("authenticated", (session) => {});
 
 client.initialize();
 client.on("qr", (qr) => {
   qrcode.generate(qr, { small: true });
 });
 
+const send_message = ["5491154986930"];
 
-const send_number = "5491154986930";
-const send_message = "Hola de prueba";
 client.on("ready", () => {
-  const autenticacion = new LegacySessionAuth();
-console.log(autenticacion);
-  enviar(send_number, send_message);
-});
+  console.log("Listo");
 
-function enviar(numero, message) {
-  console.log(numero + " => " + message);
-  client.on("ready", () => {
-    const chatId = numero + "@c.us";
+  send_message.map((value) => {
+    const chatId = value + "@c.us";
+    message = "Prueba  de envio ";
     client.sendMessage(chatId, message);
   });
-}
+});
