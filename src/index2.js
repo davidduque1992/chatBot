@@ -11,6 +11,8 @@ app.use(express.json());
 app.listen(app.get('port'), () => {
   console.log("Server on port "+app.get("port"));
 });
-app.get("/", (req, res) => {
+app.post("/whatsappApi", (req, res) => {
+  console.log(req.body)
   res.json({"title": "hola json"});
+
 });
